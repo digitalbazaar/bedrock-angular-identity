@@ -1,0 +1,7 @@
+{
+  "name": "bedrock-angular-identity",
+  "main": "./app.js",
+  "ignore": [],
+  "dependencies": {
+  }
+}
