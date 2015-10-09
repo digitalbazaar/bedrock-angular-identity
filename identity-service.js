@@ -19,15 +19,7 @@ function factory(
   service.collection = new brResourceService.Collection({
     url: identity.baseUri
   });
-  service.identity = identity.session.identity || null;
   service.state = service.collection.state;
-
-  // add session identities to identity storage and save result references
-  if(service.identity) {
-    service.collection.addToStorage(service.identity).then(function(identity) {
-      service.identity = identity;
-    });
-  }
 
   /**
    * Helper to generate identity URLs.
@@ -46,10 +38,10 @@ function factory(
       return service.identity.id;
     }
     if(options.identityMethod === 'route') {
-      return idp.identityBaseUri + '/' + $routeParams.identity;
+      return identity.identityBaseUri + '/' + $routeParams.identity;
     }
     if(options.identityMethod === 'shortId' && options.identityShortId) {
-      return idp.identityBaseUri + '/' + options.identityShortId;
+      return identity.identityBaseUri + '/' + options.identityShortId;
     }
     if(options.identityMethod === 'id' && options.id) {
       return options.id;
