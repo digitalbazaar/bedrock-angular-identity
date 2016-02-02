@@ -1,8 +1,10 @@
 {
   "name": "bedrock-angular-identity",
-  "main": "./identity.js",
+  "version": "0.0.1-dev",
+  "main": ["./identity.js"],
+  "moduleType": ["amd"],
   "ignore": [],
   "dependencies": {
-    "bedrock-angular-resource": "~1.0.1"
+    "bedrock-angular-resource": "^1.0.1"
   }
 }
