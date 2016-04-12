@@ -11,8 +11,7 @@ define([], function() {
 
 /* @ngInject */
 function factory(
-  $http, $rootScope, $routeParams, brRefreshService, brResourceService,
-  config) {
+  $rootScope, $routeParams, brRefreshService, brResourceService, config) {
   var service = {};
 
   var identity = config.data.identity;
