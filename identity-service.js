@@ -15,6 +15,8 @@ function factory(
   var service = {};
 
   var identity = config.data.identity;
+  service.basePath = identity.baseUri;
+
   service.collection = new brResourceService.Collection({
     url: identity.baseUri
   });
