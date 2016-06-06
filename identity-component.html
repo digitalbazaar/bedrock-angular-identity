@@ -1,0 +1,56 @@
+<div>
+  <div ng-show="$ctrl.identity.label" class="row">
+    <div class="col-md-12">
+      <h1 class="headline" ng-bind="$ctrl.identity.label"></h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="section col-md-12">
+      <h3 class="headline">
+        Identity Details
+      </h3>
+      <div class="alert alert-danger" ng-show="$ctrl.identity === null">
+        <strong>Error!</strong> Identity not found or access not allowed.
+      </div>
+
+      <dl ng-show="$ctrl.identity" class="dl-horizontal" about="{{$ctrl.identity.id}}" typeof="bed:{{$ctrl.identity.type}}">
+        <dt ng-show="$ctrl.identity.label">Label</dt>
+        <dd ng-show="$ctrl.identity.label">
+          <ul class="list-unstyled">
+            <li property="rdfs:label">{{$ctrl.identity.label}}</li>
+          </ul>
+        </dd>
+
+        <dt ng-show="$ctrl.identity.description">Description</dt>
+        <dd ng-show="$ctrl.identity.description">
+          <ul class="list-unstyled">
+            <li property="dc:description">{{$ctrl.identity.description}}</li>
+          </ul>
+        </dd>
+
+        <dt ng-show="$ctrl.identity.url">Website</dt>
+        <dd ng-show="$ctrl.identity.url">
+          <ul class="list-unstyled">
+            <li><a property="schema:url" href="{{$ctrl.identity.url}}">{{$ctrl.identity.url}}</a></li>
+          </ul>
+        </dd>
+
+        <dt ng-show="$ctrl.identity.email">Email</dt>
+        <dd ng-show="$ctrl.identity.email">
+          <ul class="list-unstyled">
+            <li><a property="schema:email" href="mailto:{{$ctrl.identity.email}}">{{$ctrl.identity.email}}</a></li>
+          </ul>
+        </dd>
+
+        <dt ng-show="$ctrl.identity.image">Image</dt>
+        <dd ng-show="$ctrl.identity.image">
+          <ul class="list-unstyled">
+            <li><img property="schema:image" ng-style="{'max-width': '80px', 'max-height': '80px'}" ng-src="{{$ctrl.identity.image}}"/></li>
+          </ul>
+        </dd>
+      </dl>
+    </div>
+  </div>
+  <br-identity-extras ng-transculde="extras"></br-identity-extras>
+</div>

@@ -9,11 +9,14 @@ define([], function() {
 
 'use strict';
 
+function register(module) {
+  module.service('brIdentityService', factory);
+}
+
 /* @ngInject */
 function factory(
   $rootScope, $routeParams, brRefreshService, brResourceService, config) {
   var service = {};
-
   var identity = config.data.identity;
   service.basePath = identity.baseUri;
 
@@ -67,6 +70,6 @@ function factory(
   return service;
 }
 
-return {brIdentityService: factory};
+return register;
 
 });
