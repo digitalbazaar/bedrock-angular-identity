@@ -15,15 +15,32 @@ function register(module) {
 
 /* @ngInject */
 function factory(
-  $rootScope, $routeParams, brRefreshService, brResourceService, config) {
+  $rootScope, $routeParams, brSessionService,
+  brRefreshService, brResourceService, config) {
   var service = {};
-  var identity = config.data.identity;
-  service.basePath = identity.baseUri;
+  var config = config.data.identity;
+  service.basePath = config.baseUri;
 
   service.collection = new brResourceService.Collection({
-    url: identity.baseUri
+    url: config.baseUri
   });
   service.state = service.collection.state;
+
+  // Gets the currently authenticated identity
+  service.get = function() {
+    // Grab the identity from the session
+    if(!brSessionService.session || !brSessionService.session.identity) {
+      return Promise.reject(new Error(
+        'No session available')
+      );
+    }
+    var identity = brSessionService.session.identity;
+    return service.collection.get(identity.id)
+      .then(function(result) {
+        service.identity = result;
+        return service.identity;
+      });
+  };
 
   /**
    * Helper to generate identity URLs.
@@ -43,10 +60,10 @@ function factory(
       return service.identity.id;
     }
     if(options.identityMethod === 'route') {
-      return identity.identityBaseUri + '/' + $routeParams.identity;
+      return config.identityBaseUri + '/' + $routeParams.identity;
     }
     if(options.identityMethod === 'shortId' && options.identityShortId) {
-      return identity.identityBaseUri + '/' + options.identityShortId;
+      return config.identityBaseUri + '/' + options.identityShortId;
     }
     if(options.identityMethod === 'id' && options.id) {
       return options.id;

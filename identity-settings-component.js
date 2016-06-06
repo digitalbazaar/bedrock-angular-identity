@@ -25,7 +25,7 @@ function register(module) {
 }
 
 /* @ngInject */
-function Ctrl($scope, config, brAlertService, brIdentityService, brSessionService) {
+function Ctrl($scope, config, brAlertService, brIdentityService) {
   var self = this;
   self.state = brIdentityService.state;
   self.help = {};
@@ -83,7 +83,7 @@ function Ctrl($scope, config, brAlertService, brIdentityService, brSessionServic
     // FIXME: Need to take original copy of passed in identity instead of
     // pulling the identity from the service (could be a different identity).
     self.identity = {};
-    angular.extend(self.identity, brSessionService.session.identity);
+    angular.extend(self.identity, brIdentityService.identity);
     self.identity.sysImageType = self.identity.sysImageType || 'gravatar';
     self.identity.sysGravatarType = self.identity.sysGravatarType || 'gravatar';
 
