@@ -1,6 +1,6 @@
 <form class="form-horizontal" role="form">
   <fieldset>
-    <br-input br-model="$ctrl.identity.label"
+    <br-input br-model="$ctrl.identityChanges.label"
       br-options="{icon: 'tag', name: 'label', label: 'Label'}">
       <br-input-help>Enter the public label for this identity.</br-input-help>
     </br-input>
@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <br-input br-model="$ctrl.identity.url"
+    <br-input br-model="$ctrl.identityChanges.url"
       br-options="{icon: 'globe', type: 'url', name: 'url', label: 'Website'}">
       <br-input-help>Optionally enter a website URL for this identity.</br-input-help>
     </br-input>
@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <br-input br-model="$ctrl.identity.email"
+    <br-input br-model="$ctrl.identityChanges.email"
       br-options="{icon: 'envelope', type: 'email', name: 'email', label: 'Email', disabled: true}">
       <!-- Enter an email for this identity. -->
       <br-input-help>Identity email can not be changed on this page.</br-input-help>
@@ -49,14 +49,14 @@
       </div>
     </div>
 
-    <br-radio-group br-model="$ctrl.identity.sysImageType"
+    <br-radio-group br-model="$ctrl.identityChanges.sysImageType"
       br-group="[{label: 'Gravatar', value: 'gravatar'}, {label: 'URL', value: 'url'}]"
       br-options="{inline: true, name: 'sysImageType', label: 'Image Type'}">
       Please select an image type.
     </br-radio-group>
 
-    <br-radio-group ng-show="$ctrl.identity.sysImageType == 'gravatar'"
-      br-model="$ctrl.identity.sysGravatarType"
+    <br-radio-group ng-show="$ctrl.identityChanges.sysImageType == 'gravatar'"
+      br-model="$ctrl.identityChanges.sysGravatarType"
       br-group="[
         {label: 'Gravatar', value: 'gravatar'},
         {label: 'Mystery Man', value: 'mm'},
@@ -71,8 +71,10 @@
       You can also use a generated image unique to your email.
     </br-radio-group>
 
-    <br-input ng-show="$ctrl.identity.sysImageType == 'url'"
-      br-model="$ctrl.identity.image"
+    <br-input ng-show="$ctrl.identityChanges.sysImageType == 'url'"
+      br-model="$ctrl.identityChanges.image"
+      br-input-ng-change="$ctrl.updateImagePreview()"
+      br-input-ng-model-options="{debounce: 1000}"
       br-options="{icon: 'picture-o', type: 'url', name: 'image', label: 'Image URL'}">
       <br-input-help>Enter the URL to an image for this identity.</br-input-help>
     </br-input>
@@ -92,7 +94,7 @@
       </div>
     </div>
 
-    <br-textarea br-model="$ctrl.identity.description"
+    <br-textarea br-model="$ctrl.identityChanges.description"
       br-options="{icon: 'comment', name: 'description', label: 'Description'}">
       Optionally enter a description of this identity.
     </br-textarea>
@@ -125,7 +127,7 @@
           <i class="fa fa-refresh fa-spin text-muted"></i>
         </span>
         <button type="button" class="btn btn-primary"
-          ng-disabled="$ctrl.loading || !$ctrl.identity"
+          ng-disabled="$ctrl.loading || !$ctrl.identityChanges"
           ng-click="$ctrl.update()"><i class="fa fa-check"></i> Update</button>
         <button type="button" class="btn btn-default"
           ng-disabled="$ctrl.loading"

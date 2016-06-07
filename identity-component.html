@@ -49,8 +49,8 @@
             <li><img property="schema:image" ng-style="{'max-width': '80px', 'max-height': '80px'}" ng-src="{{$ctrl.identity.image}}"/></li>
           </ul>
         </dd>
+        <div ng-transclude="extras"></div>
       </dl>
     </div>
   </div>
-  <br-identity-extras ng-transculde="extras"></br-identity-extras>
 </div>

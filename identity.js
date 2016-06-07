@@ -9,17 +9,15 @@ define([
   './identity-service',
   './identity-component',
   './identity-settings-component'],
-  function(angular, identityService) {
+  function(angular) {
 
 'use strict';
 
-var module = angular.module('bedrock.identity', []);
+var module = angular.module('bedrock.identity',
+  ['bedrock.alert', 'bedrock.resource']);
 
 Array.prototype.slice.call(arguments, 1).forEach(function(register) {
   register(module);
 });
-
-
-return module.name;
 
 });

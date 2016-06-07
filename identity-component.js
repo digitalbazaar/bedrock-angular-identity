@@ -10,18 +10,12 @@ function register(module) {
     bindings: {
       identity: '<brIdentity'
     },
-    controller: Ctrl,
     transclude: {
-      extras: '?brIdentityExtras'
+      extras: '?brIdentityAdditionalContent'
     },
     templateUrl: requirejs.toUrl(
       'bedrock-angular-identity/identity-component.html')
   });
-}
-
-/* @ngInject */
-function Ctrl($scope) {
-  var self = this;
 }
 
 return register;

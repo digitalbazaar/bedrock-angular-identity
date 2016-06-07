@@ -35,24 +35,29 @@ function Ctrl($scope, config, brAlertService, brIdentityService) {
   self.public = {};
   self.loading = true;
 
+  self.$onChanges = function(changes) {
+    if(changes.identity && changes.identity.currentValue) {
+      self.identityChanges = angular.copy(changes.identity.currentValue);
+    }
+  };
   var _gravatarUrl = function() {
     var url = 'https://secure.gravatar.com/avatar/' + self.emailHash;
     // use G rating
     url += '?r=g';
-    if(self.identity.sysGravatarType === 'gravatar') {
+    if(self.identityChanges.sysGravatarType === 'gravatar') {
       // default to mystery man
       url += '&d=mm';
     } else {
       // force a custom type
-      url += '&f=y&d=' + self.identity.sysGravatarType;
+      url += '&f=y&d=' + self.identityChanges.sysGravatarType;
     }
     return url;
   };
 
-  var _updateImagePreview = function() {
-    switch(self.identity.sysImageType) {
+  self.updateImagePreview = function() {
+    switch(self.identityChanges.sysImageType) {
       case 'url':
-        self.imagePreview = self.identity.image;
+        self.imagePreview = self.identityChanges.image;
         break;
       case 'gravatar':
         // generate gravatar image
@@ -62,35 +67,28 @@ function Ctrl($scope, config, brAlertService, brIdentityService) {
         break;
     }
   };
-  // only update every ~1s, to avoid too many requests while typing
-  var _updateImagePreviewSlowly = _.debounce(function() {
-    _updateImagePreview();
-    $scope.$apply();
-  }, 1000);
 
   $scope.$watchGroup([
-    function() {return self.identity.sysImageType;},
-    function() {return self.identity.sysGravatarType;}
+    function() {return self.identityChanges.sysImageType;},
+    function() {return self.identityChanges.sysGravatarType;}
   ], function(value) {
-    _updateImagePreview();
-  });
-
-  $scope.$watch(function() {return self.identity.image;}, function(value) {
-    _updateImagePreviewSlowly();
+    self.updateImagePreview();
   });
 
   self.cancel = function() {
     // FIXME: Need to take original copy of passed in identity instead of
     // pulling the identity from the service (could be a different identity).
-    self.identity = {};
-    angular.extend(self.identity, brIdentityService.identity);
-    self.identity.sysImageType = self.identity.sysImageType || 'gravatar';
-    self.identity.sysGravatarType = self.identity.sysGravatarType || 'gravatar';
+    self.identityChanges = {};
+    angular.extend(self.identityChanges, self.identity);
+    self.identityChanges.sysImageType =
+      self.identityChanges.sysImageType || 'gravatar';
+    self.identityChanges.sysGravatarType =
+      self.identityChanges.sysGravatarType || 'gravatar';
 
     // setup public values
     self.public = {};
-    if(self.identity.sysPublic) {
-      var sp = self.identity.sysPublic;
+    if(self.identityChanges.sysPublic) {
+      var sp = self.identityChanges.sysPublic;
       // setup each public field flag
       var _setupPublic = function(property) {
         self.public[property] = sp.indexOf(property) > -1;
@@ -113,7 +111,7 @@ function Ctrl($scope, config, brAlertService, brIdentityService) {
     }
     // cache email hash for gravatar
     var md = forge.md.md5.create();
-    md.update(self.identity.email, 'utf8');
+    md.update(self.identityChanges.email, 'utf8');
     self.emailHash = md.digest().toHex();
 
     self.loading = false;
@@ -149,28 +147,28 @@ function Ctrl($scope, config, brAlertService, brIdentityService) {
 
     var update = {
       '@context': config.data.contextUrls.identity,
-      id: self.identity.id,
-      description: self.identity.description,
-      label: self.identity.label,
-      sysImageType: self.identity.sysImageType,
+      id: self.identityChanges.id,
+      description: self.identityChanges.description,
+      label: self.identityChanges.label,
+      sysImageType: self.identityChanges.sysImageType,
       sysPublic: sysPublic,
-      url: self.identity.url
+      url: self.identityChanges.url
     };
 
-    switch(self.identity.sysImageType) {
+    switch(self.identityChanges.sysImageType) {
       case 'url':
-        update.image = self.identity.image;
+        update.image = self.identityChanges.image;
         break;
       case 'gravatar':
         update.image = _gravatarUrl();
-        update.sysGravatarType = self.identity.sysGravatarType;
+        update.sysGravatarType = self.identityChanges.sysGravatarType;
         break;
     }
 
     self.loading = true;
     brAlertService.clear();
     brIdentityService.collection.update(update, {
-      url: brIdentityService.basePath + '/' + self.identity.sysSlug
+      url: brIdentityService.basePath + '/' + self.identityChanges.sysSlug
     }).catch(function(err) {
       brAlertService.add('error', err);
     }).then(function() {
