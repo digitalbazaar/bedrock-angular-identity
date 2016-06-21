@@ -1,6 +1,6 @@
 {
   "name": "bedrock-angular-identity",
-  "version": "1.1.1-dev",
+  "version": "1.1.1",
   "main": ["./main.js"],
   "moduleType": ["amd"],
   "ignore": [],

@@ -1,6 +1,11 @@
 # bedrock-angular-identity ChangeLog
 
-## 1.1.0
+## 1.1.1 - 2016-06-21
+
+### Changed
+- Follow naming convention.
+
+## 1.1.0 - 2016-06-09
 
 ### Added
 - Add .get() function to brIdentityService to get the current identity.
