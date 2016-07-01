@@ -16,8 +16,9 @@
       </div>
     </div>
 
+    <!-- FIXME: change br-input to type 'url' -->
     <br-input br-model="$ctrl.identityChanges.url"
-      br-options="{icon: 'globe', type: 'url', name: 'url', label: 'Website'}">
+      br-options="{icon: 'globe', type: 'text', name: 'url', label: 'Website'}">
       <br-input-help>Optionally enter a website URL for this identity.</br-input-help>
     </br-input>
 
@@ -71,11 +72,12 @@
       You can also use a generated image unique to your email.
     </br-radio-group>
 
+    <!-- FIXME: change br-input to type 'url' -->
     <br-input ng-show="$ctrl.identityChanges.sysImageType == 'url'"
       br-model="$ctrl.identityChanges.image"
       br-input-ng-change="$ctrl.updateImagePreview()"
       br-input-ng-model-options="{debounce: 1000}"
-      br-options="{icon: 'picture-o', type: 'url', name: 'image', label: 'Image URL'}">
+      br-options="{icon: 'picture-o', type: 'text', name: 'image', label: 'Image URL'}">
       <br-input-help>Enter the URL to an image for this identity.</br-input-help>
     </br-input>
 
