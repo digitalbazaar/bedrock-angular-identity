@@ -85,6 +85,7 @@ api.description = function(description) {
   if(description === undefined) {
     return descriptionElement;
   }
+  descriptionElement.clear();
   descriptionElement.sendKeys(description);
 };
 

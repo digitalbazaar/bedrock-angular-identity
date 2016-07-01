@@ -1,3 +1,3 @@
-var bedrock = GLOBAL.bedrock;
+var bedrock = global.bedrock;
 
 bedrock.pages = require('./pages');
