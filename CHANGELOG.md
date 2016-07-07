@@ -1,5 +1,7 @@
 # bedrock-angular-identity ChangeLog
 
+## 1.1.3 - 2016-07-07
+
 ### Fixed
 - Use PATCH method to update identity settings.
 
