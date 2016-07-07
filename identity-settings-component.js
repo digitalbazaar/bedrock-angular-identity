@@ -147,7 +147,6 @@ function Ctrl($scope, config, brAlertService, brIdentityService) {
 
     var update = {
       '@context': config.data.contextUrls.identity,
-      id: self.identityChanges.id,
       description: self.identityChanges.description,
       label: self.identityChanges.label,
       sysImageType: self.identityChanges.sysImageType,
@@ -167,14 +166,16 @@ function Ctrl($scope, config, brAlertService, brIdentityService) {
 
     self.loading = true;
     brAlertService.clear();
-    brIdentityService.collection.update(update, {
-      url: brIdentityService.basePath + '/' + self.identityChanges.sysSlug
-    }).catch(function(err) {
-      brAlertService.add('error', err);
-    }).then(function() {
-      self.loading = false;
-      $scope.$apply();
-    });
+    brIdentityService.collection.update(
+      [{op: 'updateIdentity', changes: update}], {
+        method: 'patch',
+        url: brIdentityService.basePath + '/' + self.identityChanges.sysSlug
+      }).catch(function(err) {
+        brAlertService.add('error', err);
+      }).then(function() {
+        self.loading = false;
+        $scope.$apply();
+      });
   };
 
   // reset
