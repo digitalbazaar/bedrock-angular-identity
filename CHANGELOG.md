@@ -1,5 +1,10 @@
 # bedrock-angular-identity ChangeLog
 
+## 1.1.4 - 2016-07-14
+
+### Fixed
+- Add missing identifier to identity settings display.
+
 ## 1.1.3 - 2016-07-07
 
 ### Fixed
