@@ -1,5 +1,10 @@
 # bedrock-angular-identity ChangeLog
 
+## 1.1.5 - 2016-07-14
+
+### Changed
+- Update help text.
+
 ## 1.1.4 - 2016-07-14
 
 ### Fixed
