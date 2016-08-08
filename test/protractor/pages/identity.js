@@ -1,3 +1,7 @@
+/*!
+ * Copyright (c) 2016 Digital Bazaar, Inc. All rights reserved.
+ */
+
 var bedrock = global.bedrock;
 
 var api = {};
@@ -31,10 +35,7 @@ api.description = function() {
 
 api.url = function() {
   var component = element(by.tagName(api.COMPONENT_TAG));
-  var fields =
-    component.all(by.attribute('ng-show', '$ctrl.identity.url'));
-  expect(fields.count()).to.eventually.equal(2);
-  return fields.get(1);
+  return component.all(by.attribute('ng-show', '$ctrl.identity.url')).get(1);
 };
 
 api.email = function() {

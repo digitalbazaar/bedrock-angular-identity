@@ -1,3 +1,8 @@
+/*!
+ * Copyright (c) 2016 Digital Bazaar, Inc. All rights reserved.
+ */
+/* jshint -W030 */
+
 var bedrock = global.bedrock;
 
 var api = {};
