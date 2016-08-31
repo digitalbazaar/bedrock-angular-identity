@@ -1,5 +1,10 @@
 # bedrock-angular-identity ChangeLog
 
+## 1.1.6 - 2016-08-31
+
+### Changed
+- Add protractor pages.
+
 ## 1.1.5 - 2016-07-14
 
 ### Changed
