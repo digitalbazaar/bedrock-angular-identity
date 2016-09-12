@@ -1,5 +1,8 @@
 # bedrock-angular-identity ChangeLog
 
+### Changed
+- Show ID if possible in identity component.
+
 ## 1.1.6 - 2016-08-31
 
 ### Changed
