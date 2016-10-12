@@ -10,6 +10,8 @@
   "ignore": [],
   "dependencies": {
     "bedrock-angular": "^2.0.0",
-    "bedrock-angular-resource": "^2.0.0"
+    "bedrock-angular-resource": "^2.0.0",
+    "forge": "^0.6.43",
+    "lodash": "^4.16.4"
   }
 }
