@@ -1,7 +1,10 @@
 # bedrock-angular-identity ChangeLog
 
+## 1.1.7 - 2016-10-12
+
 ### Changed
 - Show ID if possible in identity component.
+- Add bower dependencies.
 
 ## 1.1.6 - 2016-08-31
 
