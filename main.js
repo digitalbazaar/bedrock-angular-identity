@@ -14,7 +14,7 @@ define([
 'use strict';
 
 var module = angular.module('bedrock.identity',
-  ['bedrock.alert', 'bedrock.resource']);
+  ['bedrock.alert', 'bedrock.config', 'bedrock.resource']);
 
 Array.prototype.slice.call(arguments, 1).forEach(function(register) {
   register(module);
