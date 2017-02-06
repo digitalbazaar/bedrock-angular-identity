@@ -1,9 +1,8 @@
 /*!
  * Identity Service.
  *
- * Copyright (c) 2012-2016 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2012-2017 Digital Bazaar, Inc. All rights reserved.
  *
- * @author Dave Longley
  */
 define([], function() {
 
@@ -14,14 +13,12 @@ function register(module) {
 }
 
 /* @ngInject */
-function factory(
-  $rootScope, $routeParams, brRefreshService, brResourceService, config) {
+function factory($routeParams, brResourceService, config) {
   var service = {};
-  var config = config.data.identity;
-  service.basePath = config.baseUri;
+  service.basePath = config.data['identity-http'].baseUri;
 
   service.collection = new brResourceService.Collection({
-    url: config.baseUri
+    url: config.data['identity-http'].baseUri
   });
   service.state = service.collection.state;
 
@@ -56,16 +53,6 @@ function factory(
     }
     throw Error('Identity URL generation error.');
   };
-
-  // register for system-wide refreshes
-  brRefreshService.register(function() {
-    if(service.identity) {
-      service.collection.get(service.identity.id);
-    }
-  });
-
-  // expose service to scope
-  $rootScope.app.services.identity = service;
 
   return service;
 }
