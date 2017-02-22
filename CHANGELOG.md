@@ -1,5 +1,10 @@
 # bedrock-angular-identity ChangeLog
 
+## 2.0.0 - 2017-02-22
+
+### Changed
+- Use paths from `bedrock-identity-http`.
+
 ## 1.1.7 - 2016-10-12
 
 ### Changed
