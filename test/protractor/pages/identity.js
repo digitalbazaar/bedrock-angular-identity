@@ -1,17 +1,9 @@
 /*!
- * Copyright (c) 2016 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2016-2017 Digital Bazaar, Inc. All rights reserved.
  */
-
-var bedrock = global.bedrock;
-
+/* globals expect */
 var api = {};
 module.exports = api;
-
-var by = global.by;
-var element = global.element;
-var should = global.should;
-var expect = global.expect;
-var protractor = global.protractor;
 
 api.COMPONENT_TAG = 'br-identity-viewer';
 
@@ -54,7 +46,7 @@ api.image = function() {
   return fields.get(1);
 };
 
-api.imageValue = function(element) {
+api.imageValue = function() {
 
 };
 

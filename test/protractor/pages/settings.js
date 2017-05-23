@@ -1,18 +1,12 @@
 /*!
- * Copyright (c) 2016 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2016-2017 Digital Bazaar, Inc. All rights reserved.
  */
-/* jshint -W030 */
+/* globals expect */
 
 var bedrock = global.bedrock;
 
 var api = {};
 module.exports = api;
-
-var by = global.by;
-var element = global.element;
-var should = global.should;
-var expect = global.expect;
-var protractor = global.protractor;
 
 api.PRIVACY_NO_PUBLIC = 0;
 api.PRIVACY_SPECIFIED_PUBLIC = 1;

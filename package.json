@@ -1,0 +1,24 @@
+{
+  "name": "bedrock-angular-identity",
+  "version": "2.0.0",
+  "description": "Bedrock AngularJS Identity Modules",
+  "main": "index.js",
+  "dependencies": {
+    "angular": "~1.6.4",
+    "bedrock-angular": "^3.0.0",
+    "bedrock-angular-resource": "^3.0.0",
+    "forge": "^0.6.43",
+    "lodash": "^4.16.4"
+  },
+  "bedrock": {
+    "browserDependencies": "all"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digitalbazaar/bedrock-angular-identity.git"
+  },
+  "bugs": {
+    "url": "https://github.com/digitalbazaar/bedrock-angular-identity/issues"
+  },
+  "homepage": "https://github.com/digitalbazaar/bedrock-angular-identity#readme"
+}

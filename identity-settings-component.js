@@ -1,28 +1,22 @@
 /*!
  * Identity Settings UI.
  *
- * Copyright (c) 2012-2016 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2012-2017 Digital Bazaar, Inc. All rights reserved.
  *
  * @author Dave Longley
  * @author Alex Lamar
  */
-define([
-  'angular',
-  'forge',
-  'lodash'], function(angular, forge, _) {
+import angular from 'angular';
+import forge from 'forge';
+import _ from 'lodash';
 
-'use strict';
-
-function register(module) {
-  module.component('brIdentitySettings', {
-    bindings: {
-      identity: '<brIdentity'
-    },
-    controller: Ctrl,
-    templateUrl: requirejs.toUrl(
-      'bedrock-angular-identity/identity-settings-component.html')
-  });
-}
+export default {
+  bindings: {
+    identity: '<brIdentity'
+  },
+  controller: Ctrl,
+  templateUrl: 'bedrock-angular-identity/identity-settings-component.html'
+};
 
 /* @ngInject */
 function Ctrl($scope, config, brAlertService, brIdentityService) {
@@ -71,7 +65,7 @@ function Ctrl($scope, config, brAlertService, brIdentityService) {
   $scope.$watchGroup([
     function() {return self.identityChanges.sysImageType;},
     function() {return self.identityChanges.sysGravatarType;}
-  ], function(value) {
+  ], function() {
     self.updateImagePreview();
   });
 
@@ -181,7 +175,3 @@ function Ctrl($scope, config, brAlertService, brIdentityService) {
   // reset
   self.cancel();
 }
-
-return register;
-
-});

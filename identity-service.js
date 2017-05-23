@@ -4,16 +4,8 @@
  * Copyright (c) 2012-2017 Digital Bazaar, Inc. All rights reserved.
  *
  */
-define([], function() {
-
-'use strict';
-
-function register(module) {
-  module.service('brIdentityService', factory);
-}
-
 /* @ngInject */
-function factory($routeParams, brResourceService, config) {
+export default function factory($routeParams, brResourceService, config) {
   var service = {};
   service.basePath = config.data['identity-http'].baseUri;
 
@@ -56,7 +48,3 @@ function factory($routeParams, brResourceService, config) {
 
   return service;
 }
-
-return register;
-
-});
