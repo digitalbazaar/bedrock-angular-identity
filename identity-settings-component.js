@@ -7,7 +7,7 @@
  * @author Alex Lamar
  */
 import angular from 'angular';
-import forge from 'forge';
+import forge from 'node-forge';
 import _ from 'lodash';
 
 export default {

@@ -5,10 +5,10 @@
   "main": "index.js",
   "dependencies": {
     "angular": "~1.6.4",
-    "bedrock-angular": "^3.0.0",
     "bedrock-angular-resource": "^3.0.0",
-    "forge": "^0.6.43",
-    "lodash": "^4.16.4"
+    "font-awesome": "^4.7.0",
+    "lodash": "^4.16.4",
+    "node-forge": "^0.6.43"
   },
   "bedrock": {
     "browserDependencies": "all"
