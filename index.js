@@ -9,9 +9,8 @@ import IdentityService from './identity-service.js';
 import IdentityComponent from './identity-component.js';
 import IdentitySettingsComponent from './identity-settings-component.js';
 
-var module = angular.module('bedrock.identity', ['bedrock.alert',
-  'bedrock.config', 'bedrock.resource'
-]);
+var module = angular.module(
+  'bedrock.identity', ['bedrock.alert', 'bedrock.resource']);
 
 module.service('brIdentityService', IdentityService);
 module.component('brIdentity', IdentityComponent);
