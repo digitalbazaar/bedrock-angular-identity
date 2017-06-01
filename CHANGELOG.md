@@ -1,5 +1,10 @@
 # bedrock-angular-identity ChangeLog
 
+## 3.0.2 - 2017-06-01
+
+### Fixed
+- Fix angular deps.
+
 ## 3.01. - 2017-06-01
 
 ### Fixed
