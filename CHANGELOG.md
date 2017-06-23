@@ -1,5 +1,10 @@
 # bedrock-angular-identity ChangeLog
 
+## 3.0.3 - 2017-06-23
+
+### Fixed
+- Update `node-forge` dependency for webpack compatibility.
+
 ## 3.0.2 - 2017-06-01
 
 ### Fixed
