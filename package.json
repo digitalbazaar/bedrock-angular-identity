@@ -8,7 +8,7 @@
     "bedrock-angular-resource": "^3.0.0",
     "font-awesome": "^4.7.0",
     "lodash": "^4.16.4",
-    "node-forge": "^0.6.43"
+    "node-forge": "~0.7.1"
   },
   "bedrock": {
     "browserDependencies": "all"
