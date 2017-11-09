@@ -1,5 +1,10 @@
 # bedrock-angular-identity ChangeLog
 
+## 3.0.5 - 2017-11-09
+
+### Changed
+- Replace `angular` dependency with `bedrock-angular`.
+
 ## 3.0.4 - 2017-11-09
 
 ### Changed
