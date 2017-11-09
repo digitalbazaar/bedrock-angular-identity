@@ -4,7 +4,7 @@
   "description": "Bedrock AngularJS Identity Modules",
   "main": "index.js",
   "dependencies": {
-    "angular": "~1.6.4",
+    "bedrock-angular": "^4.0.0",
     "bedrock-angular-forge": "^1.0.0",
     "bedrock-angular-resource": "^3.0.0",
     "font-awesome": "^4.7.0",
