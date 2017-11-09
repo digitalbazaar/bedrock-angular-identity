@@ -1,6 +1,6 @@
 {
   "name": "bedrock-angular-identity",
-  "version": "3.0.4",
+  "version": "3.0.5-0",
   "description": "Bedrock AngularJS Identity Modules",
   "main": "index.js",
   "dependencies": {
